@@ -7,6 +7,7 @@ export const ContactList = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch;
+  const handleDelete = id => dispatch(deleteContact(id));
 
   return (
     <ul>
@@ -17,10 +18,7 @@ export const ContactList = () => {
         .map(({ name, number, id }) => (
           <li>
             {name}: {number}
-            <button
-              onClick={() => dispatch(deleteContact(id))}
-              className={css.button}
-            >
+            <button type="button" onClick={handleDelete} className={css.button}>
               Delete
             </button>
           </li>
